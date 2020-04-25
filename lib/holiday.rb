@@ -60,17 +60,12 @@ def all_supplies_in_holidays(holiday_hash)
   # Summer:
   #   Fourth Of July: Fireworks, BBQ
   # etc.
-  holiday_hash.each {
+  holiday_hash.collect {
     |key1, key2|  
     puts "#{key1.capitalize}:"
-      key2.each {
+      key2.map {
         |day, supply| 
-          if day == :new_years || day == :fourth_of_july || day == :memorial_day
-         
-            puts " #{day.capitalize.split('_').join(" ")}: #{supply.join(", ")}"
-           else 
-               puts "  #{day.capitalize}: #{supply.join(", ")}"
-        end 
+          puts "#{day.to_s.split("_").each {|title| title.capitalize!}.join(" ")}: #{supply.join(", ")} "
       }
   }
     
